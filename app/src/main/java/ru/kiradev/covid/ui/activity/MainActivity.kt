@@ -21,7 +21,6 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 
-
 class MainActivity : MvpAppCompatActivity(), MainView {
 
     @Inject
@@ -82,7 +81,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     override fun setupActionBar() {
         setSupportActionBar(binding?.include?.toolbar)
-        appBarLayout.outlineProvider = null
         val toggle = ActionBarDrawerToggle(
             this,
             binding?.drawerLayout,
@@ -95,14 +93,22 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         window.statusBarColor = ContextCompat.getColor(this, R.color.blue)
     }
 
+    override fun setDefaultDrawerItem() {
+        binding?.navigationView?.setCheckedItem(R.id.item_main)
+    }
+
     override fun closeDrawer() {
         binding?.drawerLayout?.close()
     }
 
     override fun setOnClickForSideMenuItems() {
         binding?.navigationView?.setNavigationItemSelectedListener { item: MenuItem ->
-            when (item.itemId) {
-                R.id.item_main -> commonStatistic?.let { presenter.navigateToMainPage(it) }
+            if (!item.isChecked) {
+                when (item.itemId) {
+                    R.id.item_main ->  { commonStatistic?.let { presenter.navigateToMainPage(it) }}
+                }
+            } else {
+                presenter.backPressedDrawerOpened()
             }
             true
         }

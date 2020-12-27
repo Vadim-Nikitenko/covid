@@ -19,6 +19,7 @@ class MainPresenter(val commonStatistic: CommonStatistic?) : MvpPresenter<MainVi
         router.navigateTo(Screens.CommonStatisticScreen(commonStatistic))
         viewState.setupActionBar()
         viewState.setOnClickForSideMenuItems()
+        viewState.setDefaultDrawerItem()
     }
 
 

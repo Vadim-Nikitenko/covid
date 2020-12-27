@@ -8,4 +8,5 @@ interface MainView: MvpView {
     fun setupActionBar()
     fun closeDrawer()
     fun setOnClickForSideMenuItems()
+    fun setDefaultDrawerItem()
 }
