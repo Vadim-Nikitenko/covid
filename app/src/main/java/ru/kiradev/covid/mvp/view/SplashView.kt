@@ -5,6 +5,4 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 import ru.kiradev.covid.mvp.model.entity.CommonStatistic
 
 @AddToEndSingle
-interface SplashView : MvpView {
-    fun onDataLoaded(commonStatistic: CommonStatistic)
-}
+interface SplashView : MvpView

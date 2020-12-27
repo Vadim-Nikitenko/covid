@@ -8,6 +8,7 @@ import moxy.MvpPresenter
 import ru.kiradev.covid.mvp.model.entity.CommonStatistic
 import ru.kiradev.covid.mvp.model.repository.ICommonStatisticRepo
 import ru.kiradev.covid.mvp.view.SplashView
+import ru.kiradev.covid.navigation.Screens
 import ru.kiradev.covid.ui.BackButtonListener
 import ru.terrakok.cicerone.Router
 import java.text.SimpleDateFormat
@@ -40,7 +41,7 @@ class SplashPresenter : MvpPresenter<SplashView>() {
                 formatNumber(it.deaths),
                 formatNumber(it.recovered)
             )
-            viewState.onDataLoaded(commonStatistic)
+            router.replaceScreen(Screens.MainScreen(commonStatistic))
         }, {
             it.printStackTrace()
         }).addTo(compositeDisposable)

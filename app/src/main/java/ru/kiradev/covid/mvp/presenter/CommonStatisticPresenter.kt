@@ -11,13 +11,14 @@ import ru.kiradev.covid.mvp.model.entity.PredictionData
 import ru.kiradev.covid.mvp.model.repository.ICommonStatisticRepo
 import ru.kiradev.covid.mvp.resources.IResourceProvider
 import ru.kiradev.covid.mvp.view.CommonStatisticView
+import ru.kiradev.covid.ui.BackButtonListener
 import ru.terrakok.cicerone.Router
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
 
-class CommonStatisticPresenter(val commonStatistic: CommonStatistic?) :
+class CommonStatisticPresenter(private val commonStatistic: CommonStatistic?) :
     MvpPresenter<CommonStatisticView>() {
 
     @Inject lateinit var router: Router
@@ -49,10 +50,6 @@ class CommonStatisticPresenter(val commonStatistic: CommonStatistic?) :
         }).addTo(compositeDisposable)
     }
 
-    fun backClick(): Boolean {
-        router.finishChain()
-        return true
-    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -81,6 +78,11 @@ class CommonStatisticPresenter(val commonStatistic: CommonStatistic?) :
         list.map { barChartDataList.add(BarEntry(++i, it.cases.toFloat())) }
         val dataSet = BarDataSet(barChartDataList, resources.getPaintBarChartLabelString())
         return BarData(dataSet)
+    }
+
+    fun backPressed(): Boolean {
+        router.finishChain()
+        return true
     }
 
 }

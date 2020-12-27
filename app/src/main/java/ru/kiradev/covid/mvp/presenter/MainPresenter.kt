@@ -8,8 +8,7 @@ import ru.kiradev.covid.ui.BackButtonListener
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
-class MainPresenter(val commonStatistic: CommonStatistic?) : MvpPresenter<MainView>(),
-    BackButtonListener {
+class MainPresenter(val commonStatistic: CommonStatistic?) : MvpPresenter<MainView>() {
 
     @Inject
     lateinit var router: Router
@@ -27,11 +26,11 @@ class MainPresenter(val commonStatistic: CommonStatistic?) : MvpPresenter<MainVi
         router.replaceScreen(Screens.MainScreen(commonStatistic))
     }
 
-    fun backPressedOnOpenedDrawer() {
+    fun backPressedDrawerOpened() {
         viewState.closeDrawer()
     }
 
-    override fun backPressed(): Boolean {
+    fun backPressed(): Boolean {
         router.finishChain()
         return true
     }

@@ -74,6 +74,6 @@ class CommonStatisticFragment: MvpAppCompatFragment(), CommonStatisticView, Back
         super.onDestroyView()
     }
 
-    override fun backPressed(): Boolean = presenter.backClick()
+    override fun backPressed(): Boolean = presenter.backPressed()
 
 }

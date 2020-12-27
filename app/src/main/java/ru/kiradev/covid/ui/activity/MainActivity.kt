@@ -19,7 +19,6 @@ import ru.kiradev.covid.ui.App
 import ru.kiradev.covid.ui.BackButtonListener
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
-import java.util.*
 import javax.inject.Inject
 
 
@@ -32,10 +31,9 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     private var commonStatistic: CommonStatistic? = null
 
     companion object {
-        fun start(context: Context, commonStatistic: CommonStatistic) =
+        fun getIntent(context: Context, commonStatistic: CommonStatistic) =
             Intent(context, MainActivity::class.java).apply {
                 putExtra(COMMON_STAT_KEY, commonStatistic)
-                context.startActivity(this)
             }
     }
 
@@ -66,7 +64,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     override fun onBackPressed() {
         if (binding?.drawerLayout?.isOpen == true) {
-            presenter.backPressedOnOpenedDrawer()
+            presenter.backPressedDrawerOpened()
             return
         }
         supportFragmentManager.fragments.forEach {
@@ -109,7 +107,5 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             true
         }
     }
-
-
 
 }

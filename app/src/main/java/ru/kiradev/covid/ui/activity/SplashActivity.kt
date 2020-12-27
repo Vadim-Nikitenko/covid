@@ -43,10 +43,6 @@ class SplashActivity : MvpAppCompatActivity(), SplashView {
         App.instance.appComponent.inject(this)
     }
 
-    override fun onDataLoaded(commonStatistic: CommonStatistic) {
-        router.replaceScreen(Screens.MainScreen(commonStatistic))
-    }
-
     override fun onResumeFragments() {
         super.onResumeFragments()
         navigatorHolder.setNavigator(navigator)
