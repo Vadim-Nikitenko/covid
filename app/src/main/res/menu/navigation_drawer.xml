@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_main"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Главная"
+            android:checked="true" />
+        <item
+            android:id="@+id/item_symptoms"
+            android:icon="@drawable/ic_baseline_sick_24"
+            android:title="Симптомы" />
+        <item
+            android:id="@+id/item_ways"
+            android:icon="@drawable/ic_baseline_people_24"
+            android:title="Пути передачи" />
+        <item
+            android:id="@+id/item_prevention"
+            android:icon="@drawable/ic_baseline_clean_hands_24"
+            android:title="Профилактика" />
+    </group>
+</menu>
